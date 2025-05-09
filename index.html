@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Surprise</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #e60073;
+    }
+
+    #box {
+      width: 150px;
+      height: 150px;
+      background-color: #ff99cc;
+      border-radius: 10px;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff0066;
+      font-size: 24px;
+      animation: floatUp 2s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+      100% {
+        bottom: 150px;
+        opacity: 0;
+        transform: scale(1.5) rotate(360deg);
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff3399;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e60073;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hammad</h1>
+  <h1>Hammad ❤️</h1>
+  <div id="box"></div>
+  <button onclick="showHeart()">Surprise Her!</button>
+
+  <script>
+    function showHeart() {
+      const box = document.getElementById("box");
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 120 + "px";
+      heart.innerHTML = "❤️";
+
+      box.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
